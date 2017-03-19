@@ -48,14 +48,10 @@ Docker-symfony gives you everything you need for developing Symfony application.
         ```bash
         $ docker-compose exec php bash
         $ composer install
-        # Symfony2
-        $ sf doctrine:database:create
-        $ sf doctrine:schema:update --force
-        $ sf doctrine:fixtures:load --no-interaction
-        # Symfony3
-        $ sf3 doctrine:database:create
-        $ sf3 doctrine:schema:update --force
-        $ sf3 doctrine:fixtures:load --no-interaction
+        $ php bin/console doctrine:schema:update --force
+        $ php bin/console doctrine:fixtures:load --no-interaction
+        $ php bin/console schulzcodes:oauth-server:user:create
+        $ php bin/console schulzcodes:oauth-server:client:create --redirect-uri="http://client.local/" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials"
         ```
 
 5. Enjoy :-)
@@ -143,8 +139,3 @@ Run `docker-compose up -d` instead.
 Xdebug is configured out of the box!
 Just config your IDE to connect port  `9001` and id key `PHPSTORM`
 
-## Contributing
-
-First of all, **thank you** for contributing ♥  
-If you find any typo/misconfiguration/... please send me a PR or open an issue. You can also ping me on [twitter](https://twitter.com/_maxpou).  
-Also, while creating your Pull Request on GitHub, please write a description which gives the context and/or explains why you are creating it.

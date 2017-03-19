@@ -50,11 +50,14 @@ Docker-symfony gives you everything you need for developing Symfony application.
         $ composer install
         $ php bin/console doctrine:schema:update --force
         $ php bin/console doctrine:fixtures:load --no-interaction
+        ```
+        
+    3. Setup OAuth
+        ```bash
         $ php bin/console schulzcodes:oauth-server:user:create
         $ php bin/console schulzcodes:oauth-server:client:create --redirect-uri="http://client.local/" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials"
-        ```
-
-5. Enjoy :-)
+        ```
+        
 
 ## Usage
 

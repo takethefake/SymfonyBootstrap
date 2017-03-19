@@ -6,10 +6,13 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Schulzcodes\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class ApiController extends FOSRestController
+class ApiController extends FOSRestController implements ContainerAwareInterface
 {
+
+
     /**
      * @Route("/articles")
      */
@@ -24,7 +27,9 @@ class ApiController extends FOSRestController
      */
     public function userAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        var_dump($user);
         if($user instanceof User) {
             return new JsonResponse(array(
                 'id' => $user->getId(),

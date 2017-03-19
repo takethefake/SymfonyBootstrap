@@ -78,7 +78,8 @@ EOT
             $password = $helper->ask($input, $output, $question2);
             $question3 = new Question('Please enter the users email: <info>(admin@schulz.codes)</info>', 'admin@schulz.codes');
             $email = $helper->ask($input, $output, $question3);
-            if($this->createUser($username,$password,$email)){
+            $encoder = $this->getContainer()->get('security.password_encoder');
+            if($this->createUser($username,$email,$password)){
                 $output->writeln(
                     sprintf(
                         "<info>Successfully created User %s with password %s and email %s</info>",$username,$password,$email
@@ -96,9 +97,12 @@ EOT
         try {
             $userAdmin = new User();
             $userAdmin->setUsername($username);
+
             $encoder = $this->getContainer()->get('security.password_encoder');
             $encoded = $encoder->encodePassword($userAdmin, $password);
             $userAdmin->setPassword($encoded);
+            var_dump($encoded);
+            var_dump($encoder);
             $userAdmin->setEmail($email);
 
             $manager = $this->getContainer()->get('doctrine')->getEntityManager();

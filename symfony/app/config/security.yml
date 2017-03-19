@@ -2,6 +2,7 @@ security:
   encoders:
     Schulzcodes\UserBundle\Entity\User:
       algorithm: bcrypt
+      cost: 13
 
   role_hierarchy:
     ROLE_ADMIN:       ROLE_USER
@@ -15,6 +16,9 @@ security:
   firewalls:
     dev:
       pattern:  ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    test:
+      pattern: ^/test.php$
       security: false
     login:
       pattern:  ^/demo/secured/login$

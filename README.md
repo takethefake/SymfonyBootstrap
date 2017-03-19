@@ -1,6 +1,11 @@
-# Docker Symfony (PHP7-FPM - NGINX - MySQL - ELK)
+# Docker Symfony (PHP7-FPM - NGINX - MySQL - ELK) App + User OAuth
 
-[![Build Status](https://travis-ci.org/maxpou/docker-symfony.svg?branch=master)](https://travis-ci.org/maxpou/docker-symfony)
+## Based On
+
+  1. https://github.com/maxpou/docker-symfony for Docker Setup
+  2. http://symfony.com/doc/current/security/custom_provider.html for own Userprovider
+  3. https://causeyourestuck.io/2016/07/19/oauth2-explained-part-1-principles-terminology/ for OAuth Configuration
+  4. https://bitgandtter.blog/2015/09/30/symfony-a-restful-app-security-securing-the-token-path-fixed/ for OAuth in Symfony
 
 ![](doc/schema.png)
 

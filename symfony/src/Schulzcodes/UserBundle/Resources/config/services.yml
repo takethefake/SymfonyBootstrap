@@ -1,0 +1,17 @@
+parameters:
+  platform.entity.user.class: Schulzcodes\UserBundle\Entity\User
+  platform.user.provider.class: Schulzcodes\UserBundle\Provider\UserProvider
+  platform.user.repository.class: Schulzcodes\UserBundle\Repository\UserRepository
+
+services:
+    platform.user.manager:
+        class: Doctrine\ORM\EntityManager
+        factory: ['@doctrine','getManagerForClass']
+        arguments: ['%platform.entity.user.class%']
+    platform.user.repository:
+        class: %platform.user.repository.class%
+        factory: ['@platform.user.manager','getRepository']
+        arguments: ['%platform.entity.user.class%']
+    platform.user.provider:
+        class: %platform.user.provider.class%
+        arguments: ['@platform.user.repository']

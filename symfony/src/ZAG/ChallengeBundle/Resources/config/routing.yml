@@ -1,0 +1,3 @@
+challenge:
+    resource: "@ChallengeBundle/Controller/"
+    type:     annotation
